@@ -2,12 +2,12 @@
    KADRO — isimleri ve rolleri buradan değiştir.
    img: assets klasöründeki dosya adı.
    ========================================================= */
+// Kurucu (kadro-1.jpg) kadrodan ayrı, index.html içindeki "Kurucu" bölümünde duruyor.
 const PLAYERS = [
-  { name: "Oyuncu 01", role: "Kaptan · Kurucu", img: "kadro-1.jpg" },
-  { name: "Oyuncu 02", role: "Oyuncu",          img: "kadro-2.jpg" },
-  { name: "Oyuncu 03", role: "Oyuncu",          img: "kadro-3.jpg" },
-  { name: "Oyuncu 04", role: "Oyuncu",          img: "kadro-4.jpg" },
-  { name: "Oyuncu 05", role: "Oyuncu",          img: "kadro-5.jpg" },
+  { name: "Oyuncu 01", role: "Oyuncu", img: "kadro-2.jpg" },
+  { name: "Oyuncu 02", role: "Oyuncu", img: "kadro-3.jpg" },
+  { name: "Oyuncu 03", role: "Oyuncu", img: "kadro-4.jpg" },
+  { name: "Oyuncu 04", role: "Oyuncu", img: "kadro-5.jpg" },
   // Eksik oyuncu gelince buraya ekle: { name: "...", role: "Oyuncu", img: "kadro-6.jpg" },
 ];
 
@@ -47,7 +47,9 @@ $$(".kit-toggle button").forEach((b) => {
 });
 
 // Oyuncu sayısı kadro listesinden gelsin
-$$("[data-player-count]").forEach((el) => { el.dataset.count = PLAYERS.length; el.textContent = PLAYERS.length; });
+// Kadro + kurucu
+const TEAM_SIZE = PLAYERS.length + 1;
+$$("[data-player-count]").forEach((el) => { el.dataset.count = TEAM_SIZE; el.textContent = TEAM_SIZE; });
 
 $("#year").textContent = new Date().getFullYear();
 
