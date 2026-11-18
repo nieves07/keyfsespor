@@ -30,7 +30,7 @@ PLAYERS.forEach((p, i) => {
 });
 
 // Portreleri önceden çöz ki kaydırırken takılmasın
-$$(".card img").forEach((im) => im.decode && im.decode().catch(() => {}));
+$$(".card img, .hero-bg img").forEach((im) => im.decode && im.decode().catch(() => {}));
 
 /* ---------- Forma rengi: siyah / beyaz ---------- */
 const kit = $(".kit");
@@ -102,7 +102,7 @@ if (!hasGsap || reduced) {
     .to(".loader-inner", { y: -40, opacity: 0, duration: 0.4, ease: "power2.in" })
     .to(".loader", { yPercent: -100, duration: 0.9, ease: "power4.inOut", onComplete: () => { $(".loader").remove(); if (lenis) lenis.start(); } })
     .addLabel("in", "-=0.55")
-    .from(".mega .l", { yPercent: 70, opacity: 0, duration: 1.2, stagger: 0.08, ease: "expo.out" }, "in")
+    .from(".hero-bg", { scale: 1.12, opacity: 0, duration: 1.8, ease: "expo.out" }, "in")
     .from(".hero-title .line > span", { yPercent: 115, duration: 1.1, stagger: 0.09 }, "in+=0.35")
     .from(".hero .eyebrow, .hero-sub, .hero-actions, .scroll-hint", { y: 24, opacity: 0, duration: 0.9, stagger: 0.08 }, "in+=0.8")
     .from(".nav", { y: -80, opacity: 0, duration: 1 }, "in+=0.6")
@@ -134,7 +134,7 @@ if (!hasGsap || reduced) {
   }
 
   gsap.timeline({ scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } })
-    .fromTo(".mega .l", { x: 0, y: 0 }, { x: (i) => (i - 2) * innerWidth * 0.09, y: (i) => -40 - Math.abs(i - 2) * 30, ease: "none" }, 0)
+    .fromTo(".hero-bg", { y: 0 }, { y: () => innerHeight * 0.25, ease: "none" }, 0)
     .to(".hero-content", { yPercent: -35, opacity: 0, ease: "none" }, 0)
     .to(".scroll-hint", { opacity: 0, ease: "none", duration: 0.2 }, 0);
 
