@@ -48,11 +48,9 @@
   <main id="top">
     <!-- HERO -->
     <section class="hero">
-      <div class="hero-media">
-        <img src="assets/banner.webp" alt="KEYFS baykuş logosu, mor duman içinde" fetchpriority="high">
-      </div>
       <div class="hero-content">
         <p class="eyebrow"><span class="dot"></span> KEYFS Espor Takımı</p>
+        <div class="mega" aria-hidden="true"><span class="l" data-l="K">K</span><span class="l" data-l="E">E</span><span class="l" data-l="Y">Y</span><span class="l" data-l="F">F</span><span class="l" data-l="S">S</span></div>
         <h1 class="hero-title" aria-label="Gece bizim sahamız">
           <span class="line"><span>GECE</span> <span>BİZİM</span> <span class="accent">SAHAMIZ</span></span>
         </h1>
@@ -72,7 +70,7 @@
         Biz KEYFS'iz. Gece çöktüğünde herkes uyur, biz oynarız. Aynı formayı giyen, aynı hedefe kilitlenen bir sürüyüz. Kazanmak güzel, ama keyifle kazanmak bizim işimiz.
       </p>
       <ul class="stats">
-        <li data-reveal><strong data-count="8">8</strong><span>Oyuncu</span></li>
+        <li data-reveal><strong data-count="5" data-player-count>5</strong><span>Oyuncu</span></li>
         <li data-reveal><strong data-count="1">1</strong><span>Sürü</span></li>
         <li data-reveal><strong>24/7</strong><span>Grind</span></li>
         <li data-reveal><strong>∞</strong><span>Keyif</span></li>
@@ -132,7 +130,7 @@
       <div class="roster-track">
         <div class="roster-intro">
           <p class="eyebrow"><span class="dot"></span> Kadro</p>
-          <h2 class="display">SEKİZ<br>BAYKUŞ<br><span class="accent">TEK SÜRÜ</span></h2>
+          <h2 class="display">GECENİN<br>BAYKUŞLARI<br><span class="accent">TEK SÜRÜ</span></h2>
           <p class="muted">Kaydırmaya devam et →</p>
         </div>
         <!-- Kartlar main.js içindeki PLAYERS listesinden üretilir -->
@@ -141,32 +139,49 @@
 
     <!-- KIT -->
     <section class="kit" id="forma">
-      <div class="kit-visual" aria-hidden="true">
-        <div class="kit-frame">
-          <img src="assets/forma-2.webp" alt="" class="is-active">
-          <video src="assets/kolye.mp4" poster="assets/kolye.webp" muted loop playsinline autoplay preload="metadata"></video>
-          <img src="assets/kolluk.webp" alt="">
+      <div class="kit-visual">
+        <div class="kit-toggle" role="group" aria-label="Forma rengi">
+          <button type="button" class="is-on" data-renk="siyah" aria-pressed="true"><i class="sw sw-siyah"></i>Siyah</button>
+          <button type="button" data-renk="beyaz" aria-pressed="false"><i class="sw sw-beyaz"></i>Beyaz</button>
         </div>
-        <div class="kit-index"><b>01</b> / 03</div>
+        <div class="kit-frame" aria-hidden="true">
+          <figure class="is-active"><img src="assets/forma-siyah.webp" alt="" class="v-siyah"><img src="assets/forma-beyaz.webp" alt="" class="v-beyaz"></figure>
+          <figure><img src="assets/detay-siyah.webp" alt="" class="v-siyah"><img src="assets/detay-beyaz.webp" alt="" class="v-beyaz"></figure>
+          <figure><img src="assets/kolluk-siyah.webp" alt="" class="v-siyah"><img src="assets/kolluk-beyaz.webp" alt="" class="v-beyaz"></figure>
+        </div>
+        <div class="kit-index" aria-hidden="true"><b>01</b> / 03</div>
       </div>
       <div class="kit-steps">
+        <div class="kit-toggle kit-toggle-m" role="group" aria-label="Forma rengi">
+          <button type="button" class="is-on" data-renk="siyah" aria-pressed="true"><i class="sw sw-siyah"></i>Siyah</button>
+          <button type="button" data-renk="beyaz" aria-pressed="false"><i class="sw sw-beyaz"></i>Beyaz</button>
+        </div>
         <article class="kit-step">
-          <img class="kit-inline" src="assets/forma-2.webp" alt="KEYFS maç forması" loading="lazy">
+          <figure class="kit-inline">
+            <img src="assets/forma-siyah.webp" alt="KEYFS siyah maç forması, önü ve arkası" class="v-siyah" loading="lazy">
+            <img src="assets/forma-beyaz.webp" alt="KEYFS beyaz maç forması, önü ve arkası" class="v-beyaz" loading="lazy">
+          </figure>
           <p class="eyebrow"><span class="dot"></span> Forma · 01</p>
-          <h2 class="display">MAÇ<br><span class="accent">FORMASI</span></h2>
-          <p>Siyah zemin, mor şimşekler, göğüste baykuş. Sahneye çıktığımızda kim olduğumuzu anlatmaya gerek kalmıyor.</p>
+          <h2 class="display">2026<br><span class="accent">MAÇ FORMASI</span></h2>
+          <p>Göğüste ince çizgilerle taçlı baykuş, omuzdan eteğe inen kanat. Siyah ve beyaz iki renk; sırtta oyuncunun nicki ve adı.</p>
         </article>
         <article class="kit-step">
-          <video class="kit-inline" src="assets/kolye.mp4" poster="assets/kolye.webp" muted loop playsinline autoplay preload="metadata" aria-label="KEYFS baykuş kolyesi"></video>
-          <p class="eyebrow"><span class="dot"></span> Takı · 02</p>
-          <h2 class="display">BAYKUŞ<br><span class="accent">KOLYESİ</span></h2>
-          <p>Altın kaplama arma, mor mine ve ametist gözler. Formayı çıkardığında bile sürü seninle.</p>
+          <figure class="kit-inline">
+            <img src="assets/detay-siyah.webp" alt="Siyah formanın yaka, logo, kol ve sırt detayları" class="v-siyah" loading="lazy">
+            <img src="assets/detay-beyaz.webp" alt="Beyaz formanın yaka, logo, kol ve sırt detayları" class="v-beyaz" loading="lazy">
+          </figure>
+          <p class="eyebrow"><span class="dot"></span> Detaylar · 02</p>
+          <h2 class="display">İNCE<br><span class="accent">İŞÇİLİK</span></h2>
+          <p>İşlemeli KEYFS arması, mor örme yaka ve manşetler. Bir kolda #keyfsking, diğerinde dikişli taç.</p>
         </article>
         <article class="kit-step">
-          <img class="kit-inline" src="assets/kolluk.webp" alt="KEYFS oyuncu kolluğu" loading="lazy">
+          <figure class="kit-inline">
+            <img src="assets/kolluk-siyah.webp" alt="KEYFS siyah oyuncu kolluğu" class="v-siyah" loading="lazy">
+            <img src="assets/kolluk-beyaz.webp" alt="KEYFS beyaz oyuncu kolluğu" class="v-beyaz" loading="lazy">
+          </figure>
           <p class="eyebrow"><span class="dot"></span> Ekipman · 03</p>
           <h2 class="display">OYUNCU<br><span class="accent">KOLLUĞU</span></h2>
-          <p>Uzun seanslar için. Mouse pad üstünde kayan, formayla aynı dili konuşan kolluk.</p>
+          <p>Başparmak delikli, dirseği fileli kolluk. Bileğe doğru çoğalan tüyler ve elin üstünde taçlı baykuş.</p>
         </article>
       </div>
     </section>
@@ -185,10 +200,8 @@
       <p class="muted">Maçları kaçırma, kliplere ilk sen ulaş, bizimle oyna.</p>
       <div class="socials" lang="en">
         <!-- TODO: kendi linklerini href içine yaz -->
-        <a class="social" href="#" data-reveal><b>Discord</b><span>Topluluğa gir →</span></a>
-        <a class="social" href="#" data-reveal><b>Twitch</b><span>Canlı yayınlar →</span></a>
-        <a class="social" href="#" data-reveal><b>YouTube</b><span>Klipler ve videolar →</span></a>
-        <a class="social" href="#" data-reveal><b>Instagram</b><span>Kamera arkası →</span></a>
+        <a class="social" href="https://discord.gg/erXJfMFUuW" target="_blank" rel="noopener" data-reveal><b>Discord</b><span>Topluluğa gir →</span></a>
+        <a class="social" href="https://www.youtube.com/@keyfsesports" target="_blank" rel="noopener" data-reveal><b>YouTube</b><span>Klipler ve videolar →</span></a>
       </div>
     </section>
   </main>

@@ -3,14 +3,12 @@
    img: assets klasöründeki dosya adı.
    ========================================================= */
 const PLAYERS = [
-  { name: "Oyuncu 01", role: "Kaptan",   img: "oyuncu-1.jpg" },
-  { name: "Oyuncu 02", role: "Oyuncu",   img: "oyuncu-2.jpg" },
-  { name: "Oyuncu 03", role: "Oyuncu",   img: "oyuncu-3.jpg" },
-  { name: "Oyuncu 04", role: "Oyuncu",   img: "oyuncu-5.jpg" },
-  { name: "Oyuncu 05", role: "Oyuncu",   img: "oyuncu-6.jpg" },
-  { name: "Oyuncu 06", role: "Oyuncu",   img: "oyuncu-7.jpg" },
-  { name: "Oyuncu 07", role: "Oyuncu",   img: "oyuncu-8.jpg" },
-  { name: "Oyuncu 08", role: "Oyuncu",   img: "oyuncu-9.jpg" },
+  { name: "Oyuncu 01", role: "Kaptan · Kurucu", img: "kadro-1.jpg" },
+  { name: "Oyuncu 02", role: "Oyuncu",          img: "kadro-2.jpg" },
+  { name: "Oyuncu 03", role: "Oyuncu",          img: "kadro-3.jpg" },
+  { name: "Oyuncu 04", role: "Oyuncu",          img: "kadro-4.jpg" },
+  { name: "Oyuncu 05", role: "Oyuncu",          img: "kadro-5.jpg" },
+  // Eksik oyuncu gelince buraya ekle: { name: "...", role: "Oyuncu", img: "kadro-6.jpg" },
 ];
 
 const $ = (s, el = document) => el.querySelector(s);
@@ -33,6 +31,23 @@ PLAYERS.forEach((p, i) => {
 
 // Portreleri önceden çöz ki kaydırırken takılmasın
 $$(".card img").forEach((im) => im.decode && im.decode().catch(() => {}));
+
+/* ---------- Forma rengi: siyah / beyaz ---------- */
+const kit = $(".kit");
+$$(".kit-toggle button").forEach((b) => {
+  b.addEventListener("click", () => {
+    const renk = b.dataset.renk;
+    kit.classList.toggle("is-beyaz", renk === "beyaz");
+    $$(".kit-toggle button").forEach((x) => {
+      const on = x.dataset.renk === renk;
+      x.classList.toggle("is-on", on);
+      x.setAttribute("aria-pressed", on);
+    });
+  });
+});
+
+// Oyuncu sayısı kadro listesinden gelsin
+$$("[data-player-count]").forEach((el) => { el.dataset.count = PLAYERS.length; el.textContent = PLAYERS.length; });
 
 $("#year").textContent = new Date().getFullYear();
 
@@ -85,7 +100,7 @@ if (!hasGsap || reduced) {
     .to(".loader-inner", { y: -40, opacity: 0, duration: 0.4, ease: "power2.in" })
     .to(".loader", { yPercent: -100, duration: 0.9, ease: "power4.inOut", onComplete: () => { $(".loader").remove(); if (lenis) lenis.start(); } })
     .addLabel("in", "-=0.55")
-    .from(".hero-media img", { scale: 1.25, opacity: 0, duration: 1.8 }, "in")
+    .from(".mega .l", { yPercent: 70, opacity: 0, duration: 1.2, stagger: 0.08, ease: "expo.out" }, "in")
     .from(".hero-title .line > span", { yPercent: 115, duration: 1.1, stagger: 0.09 }, "in+=0.35")
     .from(".hero .eyebrow, .hero-sub, .hero-actions, .scroll-hint", { y: 24, opacity: 0, duration: 0.9, stagger: 0.08 }, "in+=0.8")
     .from(".nav", { y: -80, opacity: 0, duration: 1 }, "in+=0.6")
@@ -117,7 +132,7 @@ if (!hasGsap || reduced) {
   }
 
   gsap.timeline({ scrollTrigger: { trigger: ".hero", start: "top top", end: "bottom top", scrub: true } })
-    .fromTo(".hero-media", { scale: 1 }, { scale: 1.3, yPercent: 14, ease: "none" }, 0)
+    .fromTo(".mega .l", { x: 0, y: 0 }, { x: (i) => (i - 2) * innerWidth * 0.09, y: (i) => -40 - Math.abs(i - 2) * 30, ease: "none" }, 0)
     .to(".hero-content", { yPercent: -35, opacity: 0, ease: "none" }, 0)
     .to(".scroll-hint", { opacity: 0, ease: "none", duration: 0.2 }, 0);
 
@@ -231,7 +246,7 @@ if (!hasGsap || reduced) {
       });
     });
     gsap.to(".kit-frame", {
-      yPercent: -5, rotate: -2, ease: "none",
+      yPercent: -4, ease: "none",
       scrollTrigger: { trigger: ".kit", start: "top bottom", end: "bottom top", scrub: true },
     });
 
